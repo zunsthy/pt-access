@@ -1,7 +1,7 @@
 # PT-login
 
-PT-login is a tool to login multiple PT(private tracker) site and 
-store the cookies without Web browser.
+PT-login is a tool to login multiple PT(private tracker) sites and 
+store their cookies without Web browser.
 
 ## Configure
 
