@@ -1,15 +1,15 @@
 # PT-login
 
 PT-login is a tool to login multiple PT(private tracker) site and 
-record the cookies at the same time.
+store the cookies without Web browser.
 
 ## Configure
 
 * Copy `config/config.json.sample` to `config/config.json`.
 
-* Delete the site(s) where you have no account.
+* Delete the sites where you have no accounts.
 
-* Add correct `username` and `password`.
+* Add correct `username` and `password` to config file.
 
 ## Usage
 

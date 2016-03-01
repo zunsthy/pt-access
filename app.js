@@ -11,6 +11,7 @@ const config = require(configFile);
 const log = console.log.bind(console);
 const info = console.info.bind(console);
 const error = console.error.bind(console);
+
 const extend = (target, source) => {
   for(let prop in source){
     target[prop] = source[prop];
