@@ -1,0 +1,51 @@
+{
+	"hitpt": {
+		"info": {
+			"protocol": "https:",
+			"host": "pt.hit.edu.cn",
+			"port": "443"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/takelogin.php",
+			"index": "/usercp.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>"
+		}
+	},
+	"mt": {
+		"info": {
+			"protocol": "https:",
+			"host": "tp.m-team.cc",
+			"port": "443"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/takelogin.php",
+			"index": "/usercp.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>"
+		}
+	},
+	"ttg": {
+		"info": {
+			"protocol": "https:",
+			"host": "totheglory.im",
+			"port": "443"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/takelogin.php",
+			"index": "/my.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>",
+			"rememberme": "yes"
+		}
+	}
+}
