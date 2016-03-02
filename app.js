@@ -103,7 +103,7 @@ const sendData = (method, info, path, cookies, data, otherHeaders) => new Promis
 Promise.all(Object.keys(config).map((site) => new Promise((resolve, reject) => {
   let website = config[site];
   let login, cookies = {};
-  if(JSON.stringify(website.cookies).length > 5){
+  if(website.cookies && JSON.stringify(website.cookies).length > 5){
     login = sendData('GET', website.info, website.paths.index, website.cookies)
       .then((ret) => {
         if(ret.statusCode === 302){
