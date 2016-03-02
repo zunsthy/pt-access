@@ -123,7 +123,7 @@ Promise.all(Object.keys(config).map((site) => new Promise((resolve, reject) => {
   if(website.legacy){
     login.then(() => sendData('GET', website.info, website.paths.blank))
     .then((ret) => {
-      if(ret.headers['set-cookie']){
+      if(ret && ret.headers && ret.headers['set-cookie']){
         cookies = decodeCookies(ret.headers['set-cookie']);
       }
     })
