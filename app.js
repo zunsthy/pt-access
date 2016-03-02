@@ -12,6 +12,9 @@ const log = console.log.bind(console);
 const info = console.info.bind(console);
 const error = console.error.bind(console);
 
+const hit = (host) => log(`hit "${host}"`);
+const fail = (host) => info(`Info: failed to login "${host}"`);
+
 const extend = (target, source) => {
   for(let prop in source){
     target[prop] = source[prop];
@@ -102,56 +105,66 @@ const sendData = (method, info, path, cookies, data, otherHeaders) => new Promis
 
 Promise.all(Object.keys(config).map((site) => new Promise((resolve, reject) => {
   let website = config[site];
-  let login, cookies = {};
-  if(JSON.stringify(website.cookies).length > 5){
-    login = sendData('GET', website.info, website.paths.index, website.cookies)
-      .then((ret) => {
-        if(ret.statusCode === 302){
-          return false;
-        } else {
-          log(`hit "${website.info.host}"`);
-          throw(false);
-        }
-      }, (err) => {
-        error(`Error: ${err}`);
-        throw(err);
-      });
-  } else {
-    login = Promise.resolve(true);
-  }
+  if(website.method === "password" && 0){
+    let login, logon, cookies = {};
+    if(website.cookies && JSON.stringify(website.cookies).length > 5){
+      login = sendData('GET', website.info, website.paths.index, website.cookies)
+        .then((ret) => {
+          if(ret.statusCode === 302){
+            return false;
+          } else {
+            throw(false);
+          }
+        }, (err) => {
+          error(`Error: ${err}`);
+          throw(err);
+        });
+    } else {
+      login = Promise.resolve(true);
+    }
 
-  if(website.legacy){
-    login.then(() => sendData('GET', website.info, website.paths.blank))
-    .then((ret) => {
-      if(ret.headers['set-cookie']){
-        cookies = decodeCookies(ret.headers['set-cookie']);
-      }
-    })
-    .then(() => sendData('POST', website.info, website.paths.login, cookies, website.legacy, {
-      'Referer': `${website.info.protocol}//${website.info.host}:${website.info.port}${website.paths.blank}`
-    }))
-    .then((ret) => {
-      let _cookies;
-      if(ret.statusCode === 200){
-        throw(true);
-      } else {
+    if(website.legacy){
+      logon = login.then(() => sendData('GET', website.info, website.paths.blank))
+      .then((ret) => {
         if(ret.headers['set-cookie'] && ret.headers['set-cookie'].length){
-          _cookies = decodeCookies(ret.headers['set-cookie']);
+          cookies = decodeCookies(ret.headers['set-cookie']);
         }
-        extend(cookies, _cookies);
-      }
-    })
-    .then(() => sendData('GET', website.info, website.paths.index, cookies))
-    .then(() => {
-      log(`hit "${website.info.host}"`);
-      website.cookies = cookies;
-    })
-    .catch((err) => {
-      if(err){
-        info(`Info: failed to login "${website.info.host}"`);
-      }
-    })
-    .then(resolve); 
+      })
+      .then(() => sendData('POST', website.info, website.paths.login, cookies, website.legacy, {
+        'Referer': `${website.info.protocol}//${website.info.host}:${website.info.port}${website.paths.blank}`
+      }))
+      .then((ret) => {
+        let _cookies;
+        if(ret.statusCode === 200){
+          throw(true);
+        } else if(ret.statusCode === 302){
+          if(ret.headers['set-cookie'] && ret.headers['set-cookie'].length){
+            _cookies = decodeCookies(ret.headers['set-cookie']);
+          }
+          extend(cookies, _cookies);
+        } else {
+          throw(ret.statusCode);
+        }
+      })
+      .then(() => sendData('GET', website.info, website.paths.index, cookies))
+      .then(() => {
+        throw(false);
+        website.cookies = cookies;
+      })
+    } else {
+      logon = login.then(() => Promise.reject(true));
+    }
+    logon.catch((err) => err ? fail(website.info.host) : hit(website.info.host))
+      .then(resolve);
+  } else if(website.method === "passkey"){
+    sendData('GET', website.info, website.paths.download, null, website.download)
+      .then((ret) => { 
+        return ret.statusCode === 200 && /^d8:announce/.test(ret.data) ? Promise.resolve() : Promise.reject(ret.statusCode);
+      }, (err) => Promise.reject(err))
+      .then(() => hit(website.info.host), (err) => fail(website.info.host))
+      .then(resolve);
+  } else {
+    resolve();
   }
 })))
 .then(() => fs.writeFile(configFile, JSON.stringify(config, null, '\t'), 'utf8', (err) => {

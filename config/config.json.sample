@@ -47,5 +47,20 @@
 			"password": "<password>",
 			"rememberme": "yes"
 		}
+	},
+  "hudbt": {
+		"method": "passkey",
+		"info": {
+			"protocol": "https:",
+			"host": "hudbt.hust.edu.cn",
+			"port": "443"
+		},
+		"paths": {
+			"download": "/download.php"
+		},
+		"download": {
+			"passkey": "<passkey>",
+			"id": 29826
+		}
 	}
 }
