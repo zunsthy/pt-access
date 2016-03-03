@@ -207,7 +207,7 @@
 			"id": 4
 		}
 	},
-  "GGn": {
+	"GGn": {
 		"enable": false,
 		"method": "password",
 		"info": {
@@ -226,9 +226,9 @@
 			"keeplogged": "1",
 			"login": "Login"
 		}
-  },
-  "IPT": {
-    "enable": false,
+	},
+	"IPT": {
+		"enable": false,
 		"method": "password",
 		"info": {
 			"protocol": "http:",
@@ -245,7 +245,7 @@
 			"password": "<password>",
 			"php": "1"
 		}
-  },
+	},
 	"shenzhan": {
 		"enable": false,
 		"method": "password",
@@ -286,8 +286,8 @@
 			"dutime": "week"
 		}
 	},
-  "WhatCD": {
-    "enable": false,
+	"WhatCD": {
+		"enable": false,
 		"method": "password",
 		"info": {
 			"protocol": "https:",
@@ -303,11 +303,11 @@
 			"username": "<username>",
 			"password": "<password>",
 			"login": "Log+in",
-      "keeplogged": 1
+			"keeplogged": 1
 		}
-  },
-  "PTP": {
-    "enable": false,
+	},
+	"PTP": {
+		"enable": false,
 		"method": "password",
 		"info": {
 			"protocol": "http:",
@@ -323,8 +323,8 @@
 			"username": "<username>",
 			"password": "<password>",
 			"Popcron": "",
-      "keeplogged": true,
+			"keeplogged": true,
 			"WhatsYourSecret": "Hacker!+Do+you+really+have+nothing+better+do+than+this?"
 		}
-  }
+	}
 }
