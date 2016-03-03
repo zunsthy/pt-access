@@ -105,7 +105,9 @@ const sendData = (method, info, path, cookies, data, otherHeaders) => new Promis
 
 Promise.all(Object.keys(config).map((site) => new Promise((resolve, reject) => {
   let website = config[site];
-  if(website.method === "password" && 0){
+  if(website.enable === false){
+    resolve();
+  } else if(website.method === "password"){
     let login, logon, cookies = {};
     if(website.cookies && JSON.stringify(website.cookies).length > 5){
       login = sendData('GET', website.info, website.paths.index, website.cookies)
