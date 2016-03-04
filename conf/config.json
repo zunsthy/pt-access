@@ -1,330 +1,330 @@
 {
-  "HITPT": {
-    "enable": false,
-    "method": "password",
-    "info": {
-      "protocol": "https:",
-      "host": "pt.hit.edu.cn",
-      "port": "443"
-    },
-    "paths": {
-      "blank": "/login.php",
-      "login": "/takelogin.php",
-      "index": "/usercp.php"
-    },
-    "legacy": {
-      "username": "<username>",
-      "password": "<password>"
-    }
-  },
-  "M-Team": {
-    "enable": false,
-    "method": "password",
-    "info": {
-      "protocol": "https:",
-      "host": "tp.m-team.cc",
-      "port": "443"
-    },
-    "paths": {
-      "blank": "/login.php",
-      "login": "/takelogin.php",
-      "index": "/usercp.php"
-    },
-    "legacy": {
-      "username": "<username>",
-      "password": "<password>"
-    }
-  },
-  "TTG": {
-    "enable": false,
-    "method": "password",
-    "info": {
-      "protocol": "https:",
-      "host": "totheglory.im",
-      "port": "443"
-    },
-    "paths": {
-      "blank": "/login.php",
-      "login": "/takelogin.php",
-      "index": "/my.php"
-    },
-    "legacy": {
-      "username": "<username>",
-      "password": "<password>",
-      "rememberme": "yes"
-    }
-  },
-  "HUDbt": {
-    "enable": false,
-    "method": "passkey",
-    "info": {
-      "protocol": "https:",
-      "host": "hudbt.hust.edu.cn",
-      "port": "443"
-    },
-    "paths": {
-      "download": "/download.php"
-    },
-    "download": {
-      "passkey": "<passkey>",
-      "id": 29826
-    }
-  },
-  "HDArea": {
-    "enable": false,
-    "method": "password",
-    "info": {
-      "protocol": "http:",
-      "host": "www.hdarea.co",
-      "port": "80"
-    },
-    "paths": {
-      "blank": "/login.php",
-      "login": "/takelogin.php",
-      "index": "/index.php"
-    },
-    "legacy": {
-      "username": "<username>",
-      "password": "<password>"
-    }
-  },
-  "HDhome": {
-    "enable": false,
-    "method": "passkey",
-    "info": {
-      "protocol": "https:",
-      "host": "hdhome.org",
-      "port": "443"
-    },
-    "paths": {
-      "download": "/download.php"
-    },
-    "download": {
-      "passkey": "<passkey>",
-      "id": 3392
-    }
-  },
-  "HDU": {
-    "enable": false,
-    "method": "passkey",
-    "info": {
-      "protocol": "http:",
-      "host": "pt.hdupt.com",
-      "port": "80"
-    },
-    "paths": {
-      "download": "/download.php"
-    },
-    "download": {
-      "passkey": "<passkey>",
-      "id": 12
-    }
-  },
-  "City": {
-    "enable": false,
-    "method": "password",
-    "info": {
-      "protocol": "https:",
-      "host": "hdcity.top",
-      "port": "443"
-    },
-    "paths": {
-      "blank": "/login",
-      "login": "/signinhandler",
-      "index": "/index"
-    },
-    "legacy": {
-      "ppty2Zf01lo": "<username>",
-      "insf0urO0abl1i": "<password>",
-      "s0hot": "2040",
-      "asDf0z": "00e757ce9a304f59cca72a24635af9f0ce3bd03eca"
-    }
-  },
-  "U2": {
-    "enable": false,
-    "method": "passkey",
-    "info": {
-      "protocol": "https:",
-      "host": "u2.dmhy.org",
-      "port": "443"
-    },
-    "paths": {
-      "download": "/download.php"
-    },
-    "download": {
-      "passkey": "<passkey>",
-      "id": 5793
-    },
-    "TODO": "use u2-api to do it"
-  },
-  "Queen": {
-    "enable": false,
-    "method": "password",
-    "info": {
-      "protocol": "https:",
-      "host": "hdqueen.com",
-      "port": "443"
-    },
-    "paths": {
-      "blank": "/login.php",
-      "login": "/takelogin.php",
-      "index": "/index.php"
-    },
-    "legacy": {
-      "username": "<username>",
-      "password": "<password>"
-    }
-  },
-  "OpenCD": {
-    "enable": false,
-    "method": "passkey",
-    "info": {
-      "protocol": "https:",
-      "host": "open.cd",
-      "port": "443"
-    },
-    "paths": {
-      "download": "/download.php"
-    },
-    "download": {
-      "passkey": "<passkey>",
-      "id": 1234
-    }
-  },
-  "WHUPT": {
-    "enable": false,
-    "method": "passkey",
-    "info": {
-      "protocol": "https:",
-      "host": "pt.whu.edu.cn",
-      "port": "443"
-    },
-    "paths": {
-      "download": "/download.php"
-    },
-    "download": {
-      "passkey": "<passkey>",
-      "id": 4
-    }
-  },
-  "GGn": {
-    "enable": false,
-    "method": "password",
-    "info": {
-      "protocol": "http:",
-      "host": "iptorrents.me",
-      "port": "80"
-    },
-    "paths": {
-      "blank": "/login.php",
-      "login": "/login.php",
-      "index": "/index.php"
-    },
-    "legacy": {
-      "username": "<username>",
-      "password": "<password>",
-      "keeplogged": "1",
-      "login": "Login"
-    }
-  },
-  "IPT": {
-    "enable": false,
-    "method": "password",
-    "info": {
-      "protocol": "http:",
-      "host": "iptorrents.me",
-      "port": "80"
-    },
-    "paths": {
-      "blank": "/",
-      "login": "/",
-      "index": "/t"
-    },
-    "legacy": {
-      "username": "<username>",
-      "password": "<password>",
-      "php": "1"
-    }
-  },
-  "shenzhan": {
-    "enable": false,
-    "method": "password",
-    "info": {
-      "protocol": "https:",
-      "host": "shenzhan.in",
-      "port": "443"
-    },
-    "paths": {
-      "blank": "/login.php",
-      "login": "/takelogin.php",
-      "index": "/index.php"
-    },
-    "legacy": {
-      "username": "<username>",
-      "password": "<password>",
-      "loginmethod": "username",
-      "dutime": "month"
-    }
-  },
-  "HDTime": {
-    "enable": false,
-    "method": "password",
-    "info": {
-      "protocol": "https:",
-      "host": "hdtime.org",
-      "port": "443"
-    },
-    "paths": {
-      "blank": "/login.php",
-      "login": "/takelogin.php",
-      "index": "/index.php"
-    },
-    "legacy": {
-      "username": "<username>",
-      "password": "<password>",
-      "loginmethod": "username",
-      "dutime": "week"
-    }
-  },
-  "WhatCD": {
-    "enable": false,
-    "method": "password",
-    "info": {
-      "protocol": "https:",
-      "host": "what.cd",
-      "port": "443"
-    },
-    "paths": {
-      "blank": "/login.php",
-      "login": "/login.php",
-      "index": "/index.php"
-    },
-    "legacy": {
-      "username": "<username>",
-      "password": "<password>",
-      "login": "Log+in",
-      "keeplogged": 1
-    }
-  },
-  "PTP": {
-    "enable": false,
-    "method": "password",
-    "info": {
-      "protocol": "http:",
-      "host": "passthepopcorn.me",
-      "port": "80"
-    },
-    "paths": {
-      "blank": "/",
-      "login": "/ajax.php?action=login",
-      "index": "/torrents.php"
-    },
-    "legacy": {
-      "username": "<username>",
-      "password": "<password>",
-      "Popcron": "",
-      "keeplogged": true,
-      "WhatsYourSecret": "Hacker!+Do+you+really+have+nothing+better+do+than+this?"
-    }
-  }
+	"HITPT": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "https:",
+			"host": "pt.hit.edu.cn",
+			"port": "443"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/takelogin.php",
+			"index": "/usercp.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>"
+		}
+	},
+	"M-Team": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "https:",
+			"host": "tp.m-team.cc",
+			"port": "443"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/takelogin.php",
+			"index": "/usercp.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>"
+		}
+	},
+	"TTG": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "https:",
+			"host": "totheglory.im",
+			"port": "443"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/takelogin.php",
+			"index": "/my.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>",
+			"rememberme": "yes"
+		}
+	},
+	"HUDbt": {
+		"enable": false,
+		"method": "passkey",
+		"info": {
+			"protocol": "https:",
+			"host": "hudbt.hust.edu.cn",
+			"port": "443"
+		},
+		"paths": {
+			"download": "/download.php"
+		},
+		"download": {
+			"passkey": "<passkey>",
+			"id": 29826
+		}
+	},
+	"HDArea": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "http:",
+			"host": "www.hdarea.co",
+			"port": "80"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/takelogin.php",
+			"index": "/index.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>"
+		}
+	},
+	"HDhome": {
+		"enable": false,
+		"method": "passkey",
+		"info": {
+			"protocol": "https:",
+			"host": "hdhome.org",
+			"port": "443"
+		},
+		"paths": {
+			"download": "/download.php"
+		},
+		"download": {
+			"passkey": "<passkey>",
+			"id": 3392
+		}
+	},
+	"HDU": {
+		"enable": false,
+		"method": "passkey",
+		"info": {
+			"protocol": "http:",
+			"host": "pt.hdupt.com",
+			"port": "80"
+		},
+		"paths": {
+			"download": "/download.php"
+		},
+		"download": {
+			"passkey": "<passkey>",
+			"id": 12
+		}
+	},
+	"City": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "https:",
+			"host": "hdcity.top",
+			"port": "443"
+		},
+		"paths": {
+			"blank": "/login",
+			"login": "/signinhandler",
+			"index": "/index"
+		},
+		"legacy": {
+			"ppty2Zf01lo": "<username>",
+			"insf0urO0abl1i": "<password>",
+			"s0hot": "2040",
+			"asDf0z": "00e757ce9a304f59cca72a24635af9f0ce3bd03eca"
+		}
+	},
+	"U2": {
+		"enable": false,
+		"method": "passkey",
+		"info": {
+			"protocol": "https:",
+			"host": "u2.dmhy.org",
+			"port": "443"
+		},
+		"paths": {
+			"download": "/download.php"
+		},
+		"download": {
+			"passkey": "<passkey>",
+			"id": 5793
+		},
+		"TODO": "use u2-api to do it"
+	},
+	"Queen": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "https:",
+			"host": "hdqueen.com",
+			"port": "443"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/takelogin.php",
+			"index": "/index.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>"
+		}
+	},
+	"OpenCD": {
+		"enable": false,
+		"method": "passkey",
+		"info": {
+			"protocol": "https:",
+			"host": "open.cd",
+			"port": "443"
+		},
+		"paths": {
+			"download": "/download.php"
+		},
+		"download": {
+			"passkey": "<passkey>",
+			"id": 1234
+		}
+	},
+	"WHUPT": {
+		"enable": false,
+		"method": "passkey",
+		"info": {
+			"protocol": "https:",
+			"host": "pt.whu.edu.cn",
+			"port": "443"
+		},
+		"paths": {
+			"download": "/download.php"
+		},
+		"download": {
+			"passkey": "<passkey>",
+			"id": 4
+		}
+	},
+	"GGn": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "http:",
+			"host": "iptorrents.me",
+			"port": "80"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/login.php",
+			"index": "/index.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>",
+			"keeplogged": "1",
+			"login": "Login"
+		}
+	},
+	"IPT": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "http:",
+			"host": "iptorrents.me",
+			"port": "80"
+		},
+		"paths": {
+			"blank": "/",
+			"login": "/",
+			"index": "/t"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>",
+			"php": "1"
+		}
+	},
+	"shenzhan": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "https:",
+			"host": "shenzhan.in",
+			"port": "443"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/takelogin.php",
+			"index": "/index.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>",
+			"loginmethod": "username",
+			"dutime": "month"
+		}
+	},
+	"HDTime": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "https:",
+			"host": "hdtime.org",
+			"port": "443"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/takelogin.php",
+			"index": "/index.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>",
+			"loginmethod": "username",
+			"dutime": "week"
+		}
+	},
+	"WhatCD": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "https:",
+			"host": "what.cd",
+			"port": "443"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/login.php",
+			"index": "/index.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>",
+			"login": "Log+in",
+			"keeplogged": 1
+		}
+	},
+	"PTP": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "http:",
+			"host": "passthepopcorn.me",
+			"port": "80"
+		},
+		"paths": {
+			"blank": "/",
+			"login": "/ajax.php?action=login",
+			"index": "/torrents.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>",
+			"Popcron": "",
+			"keeplogged": true,
+			"WhatsYourSecret": "Hacker!+Do+you+really+have+nothing+better+do+than+this?"
+		}
+	}
 }
