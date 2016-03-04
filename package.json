@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "author": "zunsthy",
   "license": "MIT",
-  "description": "PT-login is a tool to login multiple PT(private tracker) sites and store login info without opening those sites.",
+  "description": "PT-login is a tool to access multiple PT(private tracker) sites and store login info without opening those sites.",
   "private": true,
   "main": "app.js",
   "scripts": {
