@@ -1,11 +1,14 @@
 # PT-login
 
-PT-login is a tool to login multiple PT(private tracker) sites and 
-store login info without Web browser.
+PT-login is a tool to access multiple PT(private tracker) sites 
+and store login info without opening those sites.
+
+Some PT sites remove AFK accounts, so use the tool to make last
+access time is now.
 
 ## Configure
 
-* Copy `config/config.json.sample` to `config/config.json`.
+* Open `conf/config.json` with text editor.
 
 * Enable the sites where you have no accounts.
 
@@ -22,4 +25,4 @@ Open the network connection and run it:
 
 ### Liscence
 
-PT-login is licensed under the MIT License.
+PT-login is MIT Licensed.
