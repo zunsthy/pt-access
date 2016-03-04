@@ -10,9 +10,9 @@ access time is now.
 
 * Open `conf/config.json` with text editor.
 
-* Enable the sites where you have no accounts.
+* Delete the sites where you have no accounts.
 
-* Add correct `username`, `password` and `passkey` to config file.
+* Add correct `username` and `password` to config file.
 
 ## Usage
 
