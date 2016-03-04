@@ -25,4 +25,4 @@ Open the network connection and run it:
 
 ### Liscence
 
-PT-login is licensed under the MIT License.
+PT-login is MIT Licensed.
