@@ -1,0 +1,24 @@
+{
+  "name": "pt-login",
+  "version": "0.0.1",
+  "author": "zunsthy",
+  "license": "MIT",
+  "description": "PT-login is a tool to login multiple PT(private tracker) sites and store login info without opening those sites.",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "open": "^0.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zunsthy/pt-login.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zunsthy/pt-login/issues"
+  },
+  "homepage": "https://github.com/zunsthy/pt-login#readme",
+  "keywords": ["pt", "login"]
+}
