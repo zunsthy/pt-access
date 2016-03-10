@@ -76,11 +76,11 @@ let ninfoLine = (name, site) => {
 <div class="line">
   <div class="line-container">
     <div class="row overview">
-      <div class="item info">
-        <div class="sitename">
+      <div class="item row info">
+        <div class="item sitename">
           ${name}
         </div>
-        <div class="method">
+        <div class="item method">
           ${site.method}
         </div>
       </div>
