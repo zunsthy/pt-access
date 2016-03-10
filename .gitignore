@@ -1,3 +1,4 @@
 conf/config.json
 node_modules
 web
+*.less
