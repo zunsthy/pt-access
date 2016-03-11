@@ -52,17 +52,17 @@ let tryLoginAll = () => getRequest(api, {action: 'all'});
 
 let ninfoLine = (name, site) => {
   let npath = (key, value) => `
-<div class="path path-${key}">
-  <div class="title">
+<div class="row path path-${key}">
+  <div class="item title">
     <span>${key}</span>
   </div>
-  <div class="url">
+  <div class="item url">
     <input type="text" value="${value}" />
   </div>
 </div>
   ` ;
   let nprivate = (key, value) => `
-<div class="privates private-${key}">
+<div class="item private private-${key}">
   <input type="text" placeholder="${key}" value="${value}" />
 </div>    
   ` ;
@@ -73,9 +73,9 @@ let ninfoLine = (name, site) => {
   let privates = Object.keys(config).map(key => nprivate(key, config[key])).join('');
   
   let line = `
-<div class="line">
+<div class="line" id="site-${name.toLowerCase()}">
   <div class="line-container">
-    <div class="row overview">
+    <div class="row overview alone">
       <div class="item row info">
         <div class="item sitename">
           ${name}
@@ -85,32 +85,31 @@ let ninfoLine = (name, site) => {
         </div>
       </div>
       <div class="space"></div>
-      <div class="item operate">
-        <div class="status">
-          <div class="access">
-            <div class="btn"></div>
-          </div>
-          <div class="edit">
-            <div class="btn"></div>
-          </div>
-          <div class="enable">
-            <div class="btn ${disable}"></div>
-          </div>
+      <div class="item row operate">
+        <div class="item access">
+          <div class="btn"></div>
+        </div>
+        <div class="item edit">
+          <div class="btn"></div>
+        </div>
+        <div class="item enable">
+          <div class="btn ${disable}"></div>
         </div>
       </div>
     </div>
-    <div class="details hide">
-      <div class="paths">
+    <div class="details ${disable ? 'hide' : ''} alone">
+      <div class="paths alone">
         ${paths}
       </div>
-      <div class="privates">
+      <div class="flow privates alone">
         ${privates}
       </div>
-      <div class="operate">
+      <div class="operate alone">
       </div>
     </div>
   </div>
 </div>  
+<hr></hr>
   ` ;
   
   return line;
@@ -118,28 +117,55 @@ let ninfoLine = (name, site) => {
 
 let npageHeader = () => {
   let header = `
-<div class="header-container">
-  <div class="title">
-    <h3>PT Access</h3>
-  </div>
-  <div class="operate">
-    <div class="sync-all">
-      <div class="btn">
+<div class="header">
+  <div class="row header-container">
+    <div class="item title">
+      <h3>PT Access</h3>
+    </div>
+    <div class="item row operate">
+      <div class="item sync-all">
+        <div class="btn">
+        </div>
       </div>
     </div>
-  </div>
-</div>  
+  </div>  
+</div>
   `;
   return header;
 };
 
+let npageNav = sites => {
+  let nlink = id => `
+<div class="item link-brick">
+  <a class="link" href="#site-${id.toLowerCase()}">
+    ${id}
+  </a>
+  <span class="remove">&times;</span>
+</div>
+  `;
+  let nav = `
+<div class="nav">
+  <div class="flow nav-container alone">
+    ${sites.map(nlink).join('')}
+  </div>
+</div>  
+  `;
+  console.log(sites);
+  return nav;
+};
 
-let config,
+
+let sites,
     timerList = [];
+    
+// TODO: local filter 
+let siteFilter = () => true;
 
 getList()
+.then(data => sites = data)
 .then(data => Object.keys(data).map(key => ninfoLine(key, data[key])).join(''))
 .then(html => {
   document.getElementsByTagName('main')[0].innerHTML = html;
   document.getElementsByTagName('header')[0].innerHTML = npageHeader();
+  document.getElementsByTagName('nav')[0].innerHTML = npageNav(Object.keys(sites).map(name => name));
 });
