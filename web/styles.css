@@ -1,0 +1,148 @@
+html,
+body,
+div,
+a,
+input {
+  padding: 0;
+  margin: 0;
+}
+html {
+  width: 100%;
+}
+body {
+  min-width: 240px;
+  max-width: 480px;
+}
+h1,
+h2,
+h3 {
+  margin: 10px 0;
+}
+hr {
+  color: #c5f18d;
+}
+.btn {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+input[type="text"] {
+  width: 100%;
+  border-radius: 0;
+  box-shadow: inset;
+  text-align: left;
+  font-size: 16px;
+  outline: 0;
+  border: none;
+  border-bottom: 1px solid #f8e408;
+  background-color: transparent;
+}
+input[type="text"]:focus {
+  border-bottom-color: #acd848;
+}
+.item {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.item:first-child {
+  padding-left: 0;
+}
+.item:last-child {
+  padding-right: 0;
+}
+.row {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.row .item {
+  -webkit-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+.row .space {
+  -webkit-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+.row .item-start {
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+.row .item-center {
+  -webkit-align-self: flex-center;
+  align-self: flex-center;
+}
+.row .item-end {
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+.row .item-stretch {
+  -webkit-align-self: stretch;
+  align-self: stretch;
+}
+.flow {
+  display: block;
+}
+.flow .item {
+  float: left;
+}
+.flow:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.alone {
+  margin-bottom: 15px;
+}
+.clear {
+  clear: both;
+}
+header {
+  padding: 5px 10px;
+}
+header .title {
+  margin-bottom: 5px;
+}
+header .operate {
+  float: right;
+}
+.overview .info .sitename {
+  font-weight: 700;
+}
+.overview .info .method {
+  color: #AAA;
+}
+.overview .operate .access .btn {
+  border-color: #acd848;
+}
+.overview .operate .access .btn:hover {
+  background-color: #acd848;
+}
+.overview .operate .edit .btn {
+  border-color: #f8e408;
+}
+.overview .operate .edit .btn:hover {
+  background-color: #f8e408;
+}
+.overview .operate .enable .btn {
+  border-color: #9bff0f;
+}
+.overview .operate .enable .btn:hover {
+  background-color: #9bff0f;
+}
+.overview .operate .enable .btn.disable {
+  border-color: #d3f33a;
+}
+.overview .operate .enable .btn.disable:hover {
+  background-color: #d3f33a;
+}
+.details .paths .path .title {
+  width: 150px;
+  max-width: 150px;
+}
+.details .privates .private input {
+  width: 100px;
+}
