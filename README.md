@@ -8,7 +8,7 @@ access time is now.
 
 ## Configure
 
-* Open `conf/config.json` with text editor.
+* Copy `conf/config.sample` to `conf/config.json` and open it.
 
 * Enable the sites where you have no accounts.
 
