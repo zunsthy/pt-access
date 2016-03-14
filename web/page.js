@@ -56,7 +56,7 @@ let ninfoLine = (name, site) => {
   <div class="item title">
     <span>${key}</span>
   </div>
-  <div class="item url">
+  <div class="space url">
     <input type="text" value="${value}" />
   </div>
 </div>
@@ -102,9 +102,8 @@ let ninfoLine = (name, site) => {
         ${paths}
       </div>
       <div class="flow privates alone">
+        <div class="item">
         ${privates}
-      </div>
-      <div class="operate alone">
       </div>
     </div>
   </div>
@@ -122,6 +121,7 @@ let npageHeader = () => {
     <div class="item title">
       <h3>PT Access</h3>
     </div>
+    <div class="space"></div>
     <div class="item row operate">
       <div class="item sync-all">
         <div class="btn">

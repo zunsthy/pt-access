@@ -11,7 +11,9 @@ html {
 }
 body {
   min-width: 240px;
-  max-width: 480px;
+  max-width: 360px;
+  color: #EEE;
+  background-color: #444;
 }
 h1,
 h2,
@@ -19,7 +21,7 @@ h3 {
   margin: 10px 0;
 }
 hr {
-  color: #c5f18d;
+  color: rgba(0, 0, 0, 0);
 }
 .btn {
   cursor: pointer;
@@ -29,6 +31,17 @@ hr {
   width: 15px;
   height: 15px;
 }
+.btn.warning {
+  background-color: #d3f33a;
+}
+.btn.error {
+  background-color: #bc8c64;
+}
+/*
+.hide {
+  display: none;
+}
+*/
 input[type="text"] {
   width: 100%;
   border-radius: 0;
@@ -39,6 +52,7 @@ input[type="text"] {
   border: none;
   border-bottom: 1px solid #f8e408;
   background-color: transparent;
+  color: #EEE;
 }
 input[type="text"]:focus {
   border-bottom-color: #acd848;
@@ -94,7 +108,7 @@ input[type="text"]:focus {
   content: "";
   display: block;
 }
-.alone {
+.alone:not(:last-child) {
   margin-bottom: 15px;
 }
 .clear {
@@ -104,10 +118,20 @@ header {
   padding: 5px 10px;
 }
 header .title {
-  margin-bottom: 5px;
+  width: 80%;
+}
+header .title h3 {
+  margin: 5px 0;
 }
 header .operate {
   float: right;
+}
+header .operate .sync-all .btn {
+  border-color: #c5f18d;
+}
+header .operate .sync-all .btn:hover,
+header .operate .sync-all .btn.active {
+  background-color: #c5f18d;
 }
 .overview .info .sitename {
   font-weight: 700;
@@ -118,19 +142,22 @@ header .operate {
 .overview .operate .access .btn {
   border-color: #acd848;
 }
-.overview .operate .access .btn:hover {
+.overview .operate .access .btn:hover,
+.overview .operate .access .btn.active {
   background-color: #acd848;
 }
 .overview .operate .edit .btn {
   border-color: #f8e408;
 }
-.overview .operate .edit .btn:hover {
+.overview .operate .edit .btn:hover,
+.overview .operate .edit .btn.active {
   background-color: #f8e408;
 }
 .overview .operate .enable .btn {
   border-color: #9bff0f;
 }
-.overview .operate .enable .btn:hover {
+.overview .operate .enable .btn:hover,
+.overview .operate .enable .btn.active {
   background-color: #9bff0f;
 }
 .overview .operate .enable .btn.disable {
@@ -140,9 +167,38 @@ header .operate {
   background-color: #d3f33a;
 }
 .details .paths .path .title {
-  width: 150px;
-  max-width: 150px;
+  width: 100px;
+  max-width: 100px;
 }
 .details .privates .private input {
-  width: 100px;
+  width: 150px;
+}
+.nav .nav-container {
+  padding: 8px;
+}
+.nav .nav-container .link-brick {
+  border: 1px #AAA solid;
+  padding: 2px;
+  margin: 2px;
+}
+.nav .nav-container .link-brick a.link {
+  color: #EEE;
+  text-decoration: none;
+}
+.nav .nav-container .link-brick a.link:visited,
+.nav .nav-container .link-brick a.link:hover,
+.nav .nav-container .link-brick a.link:active {
+  color: #EEE;
+}
+.nav .nav-container .link-brick a.link:hover {
+  text-decoration: underline;
+}
+.nav .nav-container .link-brick .remove {
+  cursor: pointer;
+}
+.nav .nav-container .link-brick .remove:hover {
+  color: #bc8c64;
+}
+.line-container {
+  padding: 5px 10px;
 }
