@@ -77,7 +77,7 @@ let ninfoLine = (name, site) => {
   let privates = Object.keys(config).map(key => nprivate(key, config[key])).join('');
   
   let line = `
-<div class="line" id="site-${name.toLowerCase()}">
+<div class="line" id="site-${name.toLowerCase()}" data-site-name="${name}">
   <div class="line-container">
     <div class="row overview alone">
       <div class="item row info">
@@ -167,7 +167,7 @@ let sites = {},
 // TODO: local filter 
 let LocalFilter = name => sitesBlocked.indexOf(name) === -1;
 //let siteFilter = (name, site) => site.enable && localFilter(name);
-let siteFilter = (name, site) => site.enable === (Math.random() < 0.5);
+let siteFilter = (name, site) => true;
 
 getList()
 .then(data => {
@@ -185,5 +185,43 @@ getList()
   document.getElementsByTagName('nav')[0].innerHTML = npageNav(Object.keys(sites).map(name => name));
 })
 .then(() => { // bind event
-  
+  Array.prototype.map.call(document.querySelectorAll('.line'), line => {
+    let name = line.dataset['siteName'],
+        site = sites[name],
+        baccess = line.querySelector('.item.access > .btn'),
+        bedit = line.querySelector('.item.edit > .btn'),
+        benable = line.querySelector('.item.enable > .btn'),
+        details = line.querySelector('.details');
+    // log(line, name, baccess, bedit, benable, details);
+    baccess.addEventListener('click', e => {
+      tryLogin(name)
+        .then(data => {
+          if(data === true){
+            baccess.classList.remove('warning');
+            baccess.classList.add('active');
+          } else {
+            baccess.classList.add('warning');
+          }
+        });
+    });
+    bedit.addEventListener('click', e => {
+      //e.preventDefault();
+      bedit.classList.toggle('active');
+      details.classList.toggle('hide');
+    });
+    
+    benable.addEventListener('click', e => {
+      setData({
+        site: name, 
+        enable: benable.classList.contains('disabled'), 
+      })
+        .then(data => {
+          if(data === true){
+            benable.classList.toggle('disabled');
+          } else {
+            alert(data.error);
+          }
+        });
+    })
+  });
 });

@@ -9,6 +9,17 @@ input {
 html {
   width: 100%;
 }
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:after,
+:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 body {
   min-width: 240px;
   max-width: 360px;
@@ -32,16 +43,14 @@ hr {
   height: 15px;
 }
 .btn.warning {
-  background-color: #d3f33a;
+  background-color: #d3653a;
 }
 .btn.error {
   background-color: #bc8c64;
 }
-/*
 .hide {
   display: none;
 }
-*/
 input[type="text"] {
   width: 100%;
   border-radius: 0;
@@ -57,15 +66,19 @@ input[type="text"] {
 input[type="text"]:focus {
   border-bottom-color: #acd848;
 }
-.item {
+.row > .item {
   padding-left: 5px;
   padding-right: 5px;
 }
-.item:first-child {
+.row > .item:first-child {
   padding-left: 0;
 }
-.item:last-child {
+.row > .item:last-child {
   padding-right: 0;
+}
+.item {
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .row {
   display: -webkit-flex;
@@ -153,25 +166,27 @@ header .operate .sync-all .btn.active {
 .overview .operate .edit .btn.active {
   background-color: #f8e408;
 }
-.overview .operate .enable .btn {
-  border-color: #9bff0f;
+.overview .operate .enable .btn:not(.disabled) {
+  border-color: #c6ffb7;
+  background-color: #c6ffb7;
 }
-.overview .operate .enable .btn:hover,
-.overview .operate .enable .btn.active {
-  background-color: #9bff0f;
+.overview .operate .enable .btn:not(.disabled):hover,
+.overview .operate .enable .btn:not(.disabled).active {
+  background-color: rgba(0, 0, 0, 0);
 }
-.overview .operate .enable .btn.disable {
-  border-color: #d3f33a;
+.overview .operate .enable .btn.disabled {
+  border-color: #d3653a;
+  background-color: #d3653a;
 }
-.overview .operate .enable .btn.disable:hover {
-  background-color: #d3f33a;
+.overview .operate .enable .btn.disabled:hover {
+  background-color: rgba(0, 0, 0, 0);
 }
 .details .paths .path .title {
   width: 100px;
   max-width: 100px;
 }
-.details .privates .private input {
-  width: 150px;
+.details .privates .private {
+  width: 50%;
 }
 .nav .nav-container {
   padding: 8px;

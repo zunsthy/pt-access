@@ -104,6 +104,23 @@
 			"id": 3392
 		}
 	},
+	"U2": {
+		"enable": false,
+		"method": "passkey",
+		"info": {
+			"protocol": "https:",
+			"host": "u2.dmhy.org",
+			"port": "443"
+		},
+		"paths": {
+			"download": "/download.php"
+		},
+		"download": {
+			"passkey": "<passkey>",
+			"id": 5793
+		},
+		"TODO": "use u2-api to do it"
+	},
 	"HDU": {
 		"enable": false,
 		"method": "passkey",
@@ -139,23 +156,6 @@
 			"s0hot": "2040",
 			"asDf0z": "00e757ce9a304f59cca72a24635af9f0ce3bd03eca"
 		}
-	},
-	"U2": {
-		"enable": false,
-		"method": "passkey",
-		"info": {
-			"protocol": "https:",
-			"host": "u2.dmhy.org",
-			"port": "443"
-		},
-		"paths": {
-			"download": "/download.php"
-		},
-		"download": {
-			"passkey": "<passkey>",
-			"id": 5793
-		},
-		"TODO": "use u2-api to do it"
 	},
 	"Queen": {
 		"enable": false,
