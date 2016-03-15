@@ -94,7 +94,7 @@ if(method === 'html'){
       let site = sites.get(params.site);
       if(!!site){
         if('enable' in params){
-          site.enable = params.enable ? true : false; 
+          site.enable = params.enable === 'true' ? true : false; 
         }
         if('method' in params){
           // TODO: if method changed, remove old data 
@@ -107,7 +107,7 @@ if(method === 'html'){
         res.writeHead(200, {
           'Content-Type': contentType,
         });
-        fs.writeFile(siteConfigFile, JSON.stringify(siteConfig, null, '\t'), 'utf8', (err) => {
+        fs.writeFile(siteConfigFile, JSON.stringify(siteConfig, null, '\t'), 'utf8', err => {
           if(err){
             res.end(JSON.stringify({ error: err }), 'utf-8');
           } else {
