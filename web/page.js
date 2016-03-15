@@ -2,6 +2,7 @@
 //"use strict"
 
 let api = '/api',
+    _prefix = '_pt_access__',
     log = console.log.bind(console),
     obj2qs = obj => Object.keys(obj).filter(key => key in obj).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`).join('&'),
     mergeObj = (target, ...sources) => {
@@ -15,6 +16,9 @@ let api = '/api',
       });
       return target;
     };
+
+let getLocalValue = key => JSON.parse(localStorage.getItem(_prefix + key) || 'null');
+let setLocalValue = (key, value) => localStorage.setItem(_prefix + key, JSON.stringify(value || ''));
     
 let requestJSON = (method, _url, params, _data) => new Promise((resolve, reject) => {
   let xhr = new XMLHttpRequest(),
@@ -66,7 +70,7 @@ let ninfoLine = (name, site) => {
   <input type="text" placeholder="${key}" value="${value}" />
 </div>    
   ` ;
-  let disable = site.enable ? '' : 'disable';
+  let disable = site.enable ? '' : 'disabled';
   
   let paths = Object.keys(site.paths).map(key => npath(key, site.paths[key])).join('');
   let config = site.legacy ? site.legacy : (site.download ? site.download : {});
@@ -86,24 +90,25 @@ let ninfoLine = (name, site) => {
       </div>
       <div class="space"></div>
       <div class="item row operate">
-        <div class="item access">
+        <div class="item access" title="Access">
           <div class="btn"></div>
         </div>
-        <div class="item edit">
+        <div class="item edit" title="Edit">
           <div class="btn"></div>
         </div>
-        <div class="item enable">
+        <div class="item enable" title="${disable ? 'Enable' : 'Disable'}">
           <div class="btn ${disable}"></div>
         </div>
       </div>
     </div>
-    <div class="details ${disable ? 'hide' : ''} alone">
+    <div class="details hide alone">
       <div class="paths alone">
         ${paths}
       </div>
       <div class="flow privates alone">
         <div class="item">
         ${privates}
+        </div>
       </div>
     </div>
   </div>
@@ -123,7 +128,7 @@ let npageHeader = () => {
     </div>
     <div class="space"></div>
     <div class="item row operate">
-      <div class="item sync-all">
+      <div class="item sync-all" title="Access ALL">
         <div class="btn">
         </div>
       </div>
@@ -134,7 +139,7 @@ let npageHeader = () => {
   return header;
 };
 
-let npageNav = sites => {
+let npageNav = names => {
   let nlink = id => `
 <div class="item link-brick">
   <a class="link" href="#site-${id.toLowerCase()}">
@@ -146,26 +151,39 @@ let npageNav = sites => {
   let nav = `
 <div class="nav">
   <div class="flow nav-container alone">
-    ${sites.map(nlink).join('')}
+    ${names.map(nlink).join('')}
   </div>
 </div>  
   `;
-  console.log(sites);
+  log(names);
   return nav;
 };
 
 
-let sites,
+let sites = {},
+    sitesBlocked = getLocalValue('site') || [],
     timerList = [];
     
 // TODO: local filter 
-let siteFilter = () => true;
+let LocalFilter = name => sitesBlocked.indexOf(name) === -1;
+//let siteFilter = (name, site) => site.enable && localFilter(name);
+let siteFilter = (name, site) => site.enable === (Math.random() < 0.5);
 
 getList()
-.then(data => sites = data)
+.then(data => {
+  for(key in data){
+    if(siteFilter(key, data[key])){
+      sites[key] = data[key];
+    }
+  }
+  return sites;
+})
 .then(data => Object.keys(data).map(key => ninfoLine(key, data[key])).join(''))
-.then(html => {
+.then(html => { // render page
   document.getElementsByTagName('main')[0].innerHTML = html;
   document.getElementsByTagName('header')[0].innerHTML = npageHeader();
   document.getElementsByTagName('nav')[0].innerHTML = npageNav(Object.keys(sites).map(name => name));
+})
+.then(() => { // bind event
+  
 });
