@@ -141,7 +141,7 @@ let npageHeader = () => {
 
 let npageNav = names => {
   let nlink = id => `
-<div class="item link-brick">
+<div class="item link-brick" data-site="${id}">
   <a class="link" href="#site-${id.toLowerCase()}">
     ${id}
   </a>
@@ -158,6 +158,65 @@ let npageNav = names => {
   log(names);
   return nav;
 };
+
+
+let bindEvent4Header = () => {
+};
+
+let bindEvent4Nav = () => Array.prototype.forEach.call(document.querySelectorAll('.link-brick'), item => {
+  let sitename = item.dataset['site'], 
+      bremove = item.querySelector('.remove'),
+      sitediv = document.querySelector(`#site-${sitename.toLowerCase()}`),
+      sitehr = sitediv ? sitediv.nextElementSibling : undefined;
+      
+  bremove.addEventListener('click', e => {
+    sitediv && sitediv.classList.toggle('hide');
+    sitehr && sitehr.classList.toggle('hide');
+    
+    item.classList.toggle('removed');
+  });
+});
+
+let bindEvent4Line = sites => Array.prototype.forEach.call(document.querySelectorAll('.line'), line => {
+  let name = line.dataset['siteName'],
+      site = sites[name],
+      baccess = line.querySelector('.item.access > .btn'),
+      bedit = line.querySelector('.item.edit > .btn'),
+      benable = line.querySelector('.item.enable > .btn'),
+      details = line.querySelector('.details');
+  // log(line, name, baccess, bedit, benable, details);
+  baccess.addEventListener('click', e => {
+    tryLogin(name)
+      .then(data => {
+        if(data === true){
+          baccess.classList.remove('warning');
+          baccess.classList.add('active');
+        } else {
+          baccess.classList.add('warning');
+        }
+      });
+  });
+  bedit.addEventListener('click', e => {
+    //e.preventDefault();
+    bedit.classList.toggle('active');
+    details.classList.toggle('hide');
+  });
+  
+  benable.addEventListener('click', e => {
+    setData({
+      site: name, 
+      enable: benable.classList.contains('disabled'), 
+    })
+      .then(data => {
+        if(data === true){
+          benable.classList.toggle('disabled');
+        } else {
+          alert(data.error);
+        }
+      });
+  });
+});
+
 
 
 let sites = {},
@@ -185,43 +244,6 @@ getList()
   document.getElementsByTagName('nav')[0].innerHTML = npageNav(Object.keys(sites).map(name => name));
 })
 .then(() => { // bind event
-  Array.prototype.map.call(document.querySelectorAll('.line'), line => {
-    let name = line.dataset['siteName'],
-        site = sites[name],
-        baccess = line.querySelector('.item.access > .btn'),
-        bedit = line.querySelector('.item.edit > .btn'),
-        benable = line.querySelector('.item.enable > .btn'),
-        details = line.querySelector('.details');
-    // log(line, name, baccess, bedit, benable, details);
-    baccess.addEventListener('click', e => {
-      tryLogin(name)
-        .then(data => {
-          if(data === true){
-            baccess.classList.remove('warning');
-            baccess.classList.add('active');
-          } else {
-            baccess.classList.add('warning');
-          }
-        });
-    });
-    bedit.addEventListener('click', e => {
-      //e.preventDefault();
-      bedit.classList.toggle('active');
-      details.classList.toggle('hide');
-    });
-    
-    benable.addEventListener('click', e => {
-      setData({
-        site: name, 
-        enable: benable.classList.contains('disabled'), 
-      })
-        .then(data => {
-          if(data === true){
-            benable.classList.toggle('disabled');
-          } else {
-            alert(data.error);
-          }
-        });
-    })
-  });
+  bindEvent4Line(sites);
+  bindEvent4Nav();
 });

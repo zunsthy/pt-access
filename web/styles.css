@@ -214,6 +214,9 @@ header .operate .sync-all .btn.active {
 .nav .nav-container .link-brick .remove:hover {
   color: #bc8c64;
 }
+.nav .nav-container .link-brick.removed {
+  background-color: #AAA;
+}
 .line-container {
   padding: 5px 10px;
 }
