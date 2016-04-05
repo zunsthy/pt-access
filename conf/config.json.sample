@@ -70,30 +70,32 @@
 			"id": 29826
 		}
 	},
-	"HDArea": {
+	"GGn": {
 		"enable": false,
 		"method": "password",
 		"info": {
 			"protocol": "http:",
-			"host": "www.hdarea.co",
+			"host": "iptorrents.me",
 			"port": "80"
 		},
 		"paths": {
 			"blank": "/login.php",
-			"login": "/takelogin.php",
+			"login": "/login.php",
 			"index": "/index.php"
 		},
 		"legacy": {
 			"username": "<username>",
-			"password": "<password>"
+			"password": "<password>",
+			"keeplogged": "1",
+			"login": "Login"
 		}
 	},
-	"HDhome": {
+	"U2": {
 		"enable": false,
 		"method": "passkey",
 		"info": {
 			"protocol": "https:",
-			"host": "hdhome.org",
+			"host": "u2.dmhy.org",
 			"port": "443"
 		},
 		"paths": {
@@ -101,8 +103,9 @@
 		},
 		"download": {
 			"passkey": "<passkey>",
-			"id": 3392
-		}
+			"id": 5793
+		},
+		"TODO": "use u2-api to do it"
 	},
 	"HDU": {
 		"enable": false,
@@ -140,23 +143,6 @@
 			"asDf0z": "00e757ce9a304f59cca72a24635af9f0ce3bd03eca"
 		}
 	},
-	"U2": {
-		"enable": false,
-		"method": "passkey",
-		"info": {
-			"protocol": "https:",
-			"host": "u2.dmhy.org",
-			"port": "443"
-		},
-		"paths": {
-			"download": "/download.php"
-		},
-		"download": {
-			"passkey": "<passkey>",
-			"id": 5793
-		},
-		"TODO": "use u2-api to do it"
-	},
 	"Queen": {
 		"enable": false,
 		"method": "password",
@@ -191,6 +177,24 @@
 			"id": 1234
 		}
 	},
+	"HDArea": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "http:",
+			"host": "www.hdarea.co",
+			"port": "80"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/takelogin.php",
+			"index": "/index.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>"
+		}
+	},
 	"WHUPT": {
 		"enable": false,
 		"method": "passkey",
@@ -207,24 +211,20 @@
 			"id": 4
 		}
 	},
-	"GGn": {
+	"HDhome": {
 		"enable": false,
-		"method": "password",
+		"method": "passkey",
 		"info": {
-			"protocol": "http:",
-			"host": "iptorrents.me",
-			"port": "80"
+			"protocol": "https:",
+			"host": "hdhome.org",
+			"port": "443"
 		},
 		"paths": {
-			"blank": "/login.php",
-			"login": "/login.php",
-			"index": "/index.php"
+			"download": "/download.php"
 		},
-		"legacy": {
-			"username": "<username>",
-			"password": "<password>",
-			"keeplogged": "1",
-			"login": "Login"
+		"download": {
+			"passkey": "<passkey>",
+			"id": 3392
 		}
 	},
 	"IPT": {

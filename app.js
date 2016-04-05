@@ -8,7 +8,7 @@ const open = require('open');
 const querystring = require('querystring');
 
 const log = console.log.bind(console);
-const PTLogin = require('./lib/pt-login.js');
+const PTAccess = require('./lib/pt-access.js');
 
 let siteConfigFile = './conf/config.json';
 let args = process.argv.slice(2);
@@ -41,7 +41,7 @@ args.forEach(arg => {
 if(method === 'html'){
   let rStaticFile = /\/web\//,
       rApi = /\/api/,
-      sites = Object.keys(siteConfig).reduce((m, site) => m.set(site, new PTLogin(siteConfig[site])), new Map());
+      sites = Object.keys(siteConfig).reduce((m, site) => m.set(site, new PTAccess(siteConfig[site])), new Map());
   
   let errorHandle = (code, res) => {
     res.writeHead(code);
@@ -94,7 +94,7 @@ if(method === 'html'){
       let site = sites.get(params.site);
       if(!!site){
         if('enable' in params){
-          site.enable = params.enable ? true : false; 
+          site.enable = params.enable === 'true' ? true : false; 
         }
         if('method' in params){
           // TODO: if method changed, remove old data 
@@ -107,7 +107,7 @@ if(method === 'html'){
         res.writeHead(200, {
           'Content-Type': contentType,
         });
-        fs.writeFile(siteConfigFile, JSON.stringify(siteConfig, null, '\t'), 'utf8', (err) => {
+        fs.writeFile(siteConfigFile, JSON.stringify(siteConfig, null, '\t'), 'utf8', err => {
           if(err){
             res.end(JSON.stringify({ error: err }), 'utf-8');
           } else {
@@ -125,11 +125,7 @@ if(method === 'html'){
             res.writeHead(200, {
               'Content-Type': contentType,
             });
-            if(status === 0){
-              res.end(JSON.stringify(true), 'utf-8');
-            } else {
-              res.end(JSON.stringify(false), 'utf-8');
-            }
+            res.end(JSON.stringify(status), 'utf-8');
           });
       } else {
         errorHandle(500, res);
@@ -156,12 +152,12 @@ if(method === 'html'){
           res.end(JSON.stringify(obj), 'utf-8');
         }).then(() => {
           // TODO: if nothing new   
-          // save cookies 
-          fs.writeFile(siteConfigFile, JSON.stringify(siteConifg, null, '\t'), 'utf-8', err => {
+          // save cookies
+          fs.writeFile(siteConfigFile, JSON.stringify(siteConfig, null, '\t'), 'utf-8', err => {
             if(err){
               log(`Error(cannot save session): ${err}`);
             } 
-          })
+          });
         });
     } else {
       errorHandle(400, res);
@@ -184,8 +180,8 @@ if(method === 'html'){
   open('http://localhost:22079/web/index.html');
 } else { // if(method === 'cli')
   Promise.all(Object.keys(siteConfig).map(site => {
-    let login = new PTLogin(siteConfig[site]);
-    return login.tryAccess(cookies => siteConfig[site].cookies = cookies);
+    let access = new PTAccess(siteConfig[site]);
+    return access.tryAccess(cookies => siteConfig[site].cookies = cookies);
   }))
   .then((status) => {
     fs.writeFile(siteConfigFile, JSON.stringify(siteConfig, null, '\t'), 'utf8', (err) => {

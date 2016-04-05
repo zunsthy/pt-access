@@ -2,6 +2,7 @@
 //"use strict"
 
 let api = '/api',
+    _prefix = '_pt_access__',
     log = console.log.bind(console),
     obj2qs = obj => Object.keys(obj).filter(key => key in obj).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(obj[key])}`).join('&'),
     mergeObj = (target, ...sources) => {
@@ -15,6 +16,9 @@ let api = '/api',
       });
       return target;
     };
+
+let getLocalValue = key => JSON.parse(localStorage.getItem(_prefix + key) || 'null');
+let setLocalValue = (key, value) => localStorage.setItem(_prefix + key, JSON.stringify(value || ''));
     
 let requestJSON = (method, _url, params, _data) => new Promise((resolve, reject) => {
   let xhr = new XMLHttpRequest(),
@@ -46,8 +50,8 @@ let postRequest = (url, data, params) => requestJSON('POST', url, params, data);
 
 let getList = () => getRequest(api, {action: 'list'}); 
 let setData = data => getRequest(api, mergeObj({action: 'set'}, data));
-let tryLogin = site => getRequest(api, {action: 'try', site: site}); 
-let tryLoginAll = () => getRequest(api, {action: 'all'});
+let tryAccess = site => getRequest(api, {action: 'try', site: site}); 
+let tryAccessAll = () => getRequest(api, {action: 'all'});
 
 
 let ninfoLine = (name, site) => {
@@ -56,7 +60,7 @@ let ninfoLine = (name, site) => {
   <div class="item title">
     <span>${key}</span>
   </div>
-  <div class="item url">
+  <div class="space url">
     <input type="text" value="${value}" />
   </div>
 </div>
@@ -66,14 +70,14 @@ let ninfoLine = (name, site) => {
   <input type="text" placeholder="${key}" value="${value}" />
 </div>    
   ` ;
-  let disable = site.enable ? '' : 'disable';
+  let disable = site.enable ? '' : 'disabled';
   
   let paths = Object.keys(site.paths).map(key => npath(key, site.paths[key])).join('');
   let config = site.legacy ? site.legacy : (site.download ? site.download : {});
   let privates = Object.keys(config).map(key => nprivate(key, config[key])).join('');
   
   let line = `
-<div class="line" id="site-${name.toLowerCase()}">
+<div class="line" id="site-${name.toLowerCase()}" data-site-name="${name}">
   <div class="line-container">
     <div class="row overview alone">
       <div class="item row info">
@@ -86,25 +90,25 @@ let ninfoLine = (name, site) => {
       </div>
       <div class="space"></div>
       <div class="item row operate">
-        <div class="item access">
+        <div class="item access" title="Access">
           <div class="btn"></div>
         </div>
-        <div class="item edit">
+        <div class="item edit" title="Edit">
           <div class="btn"></div>
         </div>
-        <div class="item enable">
+        <div class="item enable" title="${disable ? 'Enable' : 'Disable'}">
           <div class="btn ${disable}"></div>
         </div>
       </div>
     </div>
-    <div class="details ${disable ? 'hide' : ''} alone">
+    <div class="details hide alone">
       <div class="paths alone">
         ${paths}
       </div>
       <div class="flow privates alone">
+        <div class="item">
         ${privates}
-      </div>
-      <div class="operate alone">
+        </div>
       </div>
     </div>
   </div>
@@ -122,8 +126,9 @@ let npageHeader = () => {
     <div class="item title">
       <h3>PT Access</h3>
     </div>
+    <div class="space"></div>
     <div class="item row operate">
-      <div class="item sync-all">
+      <div class="item sync-all" title="Access ALL">
         <div class="btn">
         </div>
       </div>
@@ -134,9 +139,9 @@ let npageHeader = () => {
   return header;
 };
 
-let npageNav = sites => {
+let npageNav = names => {
   let nlink = id => `
-<div class="item link-brick">
+<div class="item link-brick" data-site="${id}">
   <a class="link" href="#site-${id.toLowerCase()}">
     ${id}
   </a>
@@ -146,26 +151,126 @@ let npageNav = sites => {
   let nav = `
 <div class="nav">
   <div class="flow nav-container alone">
-    ${sites.map(nlink).join('')}
+    ${names.map(nlink).join('')}
   </div>
 </div>  
   `;
-  console.log(sites);
+  log(names);
   return nav;
 };
 
 
-let sites,
+let bindEvent4Header = () => {
+  let header = document.querySelector('.header'),
+      bsync = header.querySelector('.operate > .sync-all > .btn'),
+      baccess = Array.prototype.reduce.call(document.querySelectorAll('.link-brick'), (m, item) => {
+        return m.set(item.dataset['site'], item.querySelector('.item.access'));
+      }, new Map);
+  
+  bsync.addEventListener('click', e => {
+    tryAccessAll().then(data => {
+      Object.keys(data).forEach(item => {
+        let name = item,
+            status = data[item];
+        if(baccess[name]){
+          if(status === 0){
+            baccess.classList.remove('warning');
+            baccess.classList.add('active');
+          } else {
+            baccess.classList.remove('active');
+            baccess.classList.add('warning');
+          }
+        }
+      });
+    })
+    .then(() => bsync.classList.add('active'));
+  });
+};
+
+let bindEvent4Nav = () => Array.prototype.forEach.call(document.querySelectorAll('.link-brick'), item => {
+  let sitename = item.dataset['site'], 
+      bremove = item.querySelector('.remove'),
+      sitediv = document.querySelector(`#site-${sitename.toLowerCase()}`),
+      sitehr = sitediv ? sitediv.nextElementSibling : undefined;
+      
+  bremove.addEventListener('click', e => {
+    sitediv && sitediv.classList.toggle('hide');
+    sitehr && sitehr.classList.toggle('hide');
+    
+    item.classList.toggle('removed');
+  });
+});
+
+let bindEvent4Line = sites => Array.prototype.forEach.call(document.querySelectorAll('.line'), line => {
+  let name = line.dataset['siteName'],
+      site = sites[name],
+      baccess = line.querySelector('.item.access > .btn'),
+      bedit = line.querySelector('.item.edit > .btn'),
+      benable = line.querySelector('.item.enable > .btn'),
+      details = line.querySelector('.details');
+  // log(line, name, baccess, bedit, benable, details);
+  baccess.addEventListener('click', e => {
+    tryAccess(name)
+      .then(data => {
+        baccess.classList.remove('warning', 'active', 'error');
+        if(data === 0){
+          baccess.classList.add('active');
+        } else if(data === 2){
+          baccess.classList.add('warning');
+        } else {
+          baccess.classList.add('error');
+        }
+      });
+  });
+  bedit.addEventListener('click', e => {
+    //e.preventDefault();
+    bedit.classList.toggle('active');
+    details.classList.toggle('hide');
+  });
+  
+  benable.addEventListener('click', e => {
+    setData({
+      site: name, 
+      enable: benable.classList.contains('disabled'), 
+    })
+      .then(data => {
+        if(data === true){
+          benable.classList.toggle('disabled');
+        } else {
+          alert(data.error);
+        }
+      });
+  });
+});
+
+
+
+let sites = {},
+    sitesBlocked = getLocalValue('site') || [],
     timerList = [];
     
 // TODO: local filter 
-let siteFilter = () => true;
+let LocalFilter = name => sitesBlocked.indexOf(name) === -1;
+//let siteFilter = (name, site) => site.enable && localFilter(name);
+let siteFilter = (name, site) => true;
 
 getList()
-.then(data => sites = data)
+.then(data => {
+  for(key in data){
+    if(siteFilter(key, data[key])){
+      sites[key] = data[key];
+    }
+  }
+  return sites;
+})
 .then(data => Object.keys(data).map(key => ninfoLine(key, data[key])).join(''))
-.then(html => {
+.then(html => { // render page
   document.getElementsByTagName('main')[0].innerHTML = html;
   document.getElementsByTagName('header')[0].innerHTML = npageHeader();
   document.getElementsByTagName('nav')[0].innerHTML = npageNav(Object.keys(sites).map(name => name));
+})
+.then(() => { // bind event
+  bindEvent4Header();
+  bindEvent4Nav();
+  bindEvent4Line(sites);
 });
