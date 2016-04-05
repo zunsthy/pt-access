@@ -42,11 +42,14 @@ hr {
   width: 15px;
   height: 15px;
 }
+.btn.info {
+  background-color: #bc8c64;
+}
 .btn.warning {
-  background-color: #d3653a;
+  background-color: #e9e9d4;
 }
 .btn.error {
-  background-color: #bc8c64;
+  background-color: #d3653a;
 }
 .hide {
   display: none;
@@ -212,7 +215,7 @@ header .operate .sync-all .btn.active {
   cursor: pointer;
 }
 .nav .nav-container .link-brick .remove:hover {
-  color: #bc8c64;
+  color: #d3653a;
 }
 .nav .nav-container .link-brick.removed {
   background-color: #AAA;
