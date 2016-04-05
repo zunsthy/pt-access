@@ -1,0 +1,273 @@
+@theme1: rgba(172, 216, 72, 1);
+@theme1-bg: rgba(198, 246, 116, .8);
+@theme2: rgba(248, 228, 8, 1);
+@theme3: rgba(197, 241, 141, 1);
+
+@info: rgb(188, 140, 100);
+@error: rgb(211, 101, 58);
+@success: #c6ffb7;
+@warning: rgb(233, 233, 212);
+@black: #444;
+@gray: #AAA;
+@light: #EEE;
+@none: rgba(0, 0, 0, 0);
+
+html, body, div, a, input, {
+  padding: 0;
+  margin: 0;
+}
+html {
+  width: 100%;
+}
+
+* {
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box
+}
+:after, :before {
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box
+}
+
+body {
+  min-width: 240px;
+  max-width: 360px;
+  
+  color: @light;
+  background-color: @black;
+  
+}
+
+h1, h2, h3 {
+  margin: 10px 0;
+}
+
+hr {
+  color: @none;
+}
+
+.btn {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+
+.btn.info {
+  background-color: @info;
+}
+
+.btn.warning {
+  background-color: @warning;
+}
+
+.btn.error {
+  background-color: @error;
+}
+
+.hide {
+  display: none;
+}
+
+input[type="text"] {
+  width: 100%;
+  border-radius: 0;
+  box-shadow: inset;
+  text-align: left;
+  font-size: 16px;
+  outline: 0;
+  border: none;
+  border-bottom: 1px solid @theme2;
+  background-color: transparent;
+  
+  color: @light;
+  
+  &:focus {
+    border-bottom-color: @theme1;
+  }
+}
+
+.row > .item {
+  padding-left: 5px;
+  padding-right: 5px;
+  &:first-child {
+    padding-left: 0;
+  }
+  &:last-child {
+    padding-right: 0;
+  }
+}
+.item {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.row {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  .item {
+    -webkit-flex: 0 1 auto;
+    flex: 0 1 auto;
+  }
+  .space {
+    -webkit-flex: 1 0 auto;
+    flex: 1 0 auto;
+  }
+  .item-start {
+    -webkit-align-self: flex-start;
+    align-self: flex-start;
+  }
+  .item-center {
+    -webkit-align-self: flex-center;
+    align-self: flex-center;
+  }
+  .item-end {
+    -webkit-align-self: flex-end;
+    align-self: flex-end;
+  }
+  .item-stretch {
+    -webkit-align-self: stretch;
+    align-self: stretch;
+  }
+}
+
+.flow {
+  display: block;
+  .item {
+    float: left;
+  }
+  &:after {
+    clear: both;
+    content: "";
+    display: block;
+  }
+}
+
+.alone:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.clear {
+  clear: both;
+}
+
+header {
+  padding: 5px 10px;
+  .title {
+    width: 80%;
+    h3 {
+      margin: 5px 0;
+    }
+  }
+  .operate {
+    float: right;
+    .sync-all {
+      .btn {
+        border-color: @theme3;
+        &:hover, &.active {
+          background-color: @theme3;
+        }
+      }
+    }
+  }
+}
+
+.overview {
+  .info {
+    .sitename {
+      font-weight: 700;
+    }
+    .method {
+      color: @gray;
+    }
+  }
+  .operate {
+    .access {
+      .btn{
+        border-color: @theme1;
+        &:hover, &.active {
+          background-color: @theme1;
+        }
+      }
+    }
+    .edit {
+      .btn{
+        border-color: @theme2;
+        &:hover, &.active {
+          background-color: @theme2;
+        }
+      }
+    }
+    .enable {
+      .btn:not(.disabled) {
+        border-color: @success;
+        background-color: @success;
+        &:hover, &.active {
+          background-color: @none;
+        }
+      }
+      .btn.disabled {
+        border-color: @error;
+        background-color: @error;
+        &:hover {
+          background-color: @none;
+        }
+      }
+    }
+  }
+}
+.details {
+  .paths {
+    .path {
+      .title {
+        width: 100px;
+        max-width: 100px;
+      }
+    }
+  }
+  .privates {
+    .private {
+      width: 50%; 
+    }
+  }
+}
+
+.nav {
+  .nav-container {
+    padding: 8px;
+    .link-brick {
+      border: 1px @gray solid;
+      padding: 2px;
+      margin: 2px;
+      a.link {
+        color: @light;
+        text-decoration: none;
+        &:visited, &:hover, &:active {
+          color: @light;
+        } 
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .remove {
+        cursor: pointer;
+        &:hover {
+          color: @error;
+        }
+      }
+    }
+    .link-brick.removed {
+      background-color: @gray;
+    }
+  }
+}
+
+.line-container {
+  padding: 5px 10px;
+}
