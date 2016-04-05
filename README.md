@@ -1,6 +1,6 @@
-# PT-login
+# PT-Access
 
-PT-login is a tool to access multiple PT(private tracker) sites 
+PT-Access is a tool to access multiple PT(private tracker) sites 
 and store login info without opening those sites.
 
 Some PT sites remove AFK accounts, so use the tool to make last
