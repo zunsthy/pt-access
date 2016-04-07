@@ -1,4 +1,2 @@
 conf/config.json
 node_modules
-*.less
-gulpfile.js
