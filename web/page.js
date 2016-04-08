@@ -106,9 +106,7 @@ let ninfoLine = (name, site) => {
         ${paths}
       </div>
       <div class="flow privates alone">
-        <div class="item">
         ${privates}
-        </div>
       </div>
     </div>
   </div>

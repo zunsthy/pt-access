@@ -1,3 +1,4 @@
+/* global function */
 html,
 body,
 div,
@@ -34,6 +35,12 @@ h3 {
 hr {
   color: rgba(0, 0, 0, 0);
 }
+.clear {
+  clear: both;
+}
+.hide {
+  display: none;
+}
 .btn {
   cursor: pointer;
   border-style: solid;
@@ -43,7 +50,7 @@ hr {
   height: 15px;
 }
 .btn.info {
-  background-color: #bc8c64;
+  background-color: #bc9c64;
 }
 .btn.warning {
   background-color: #e9e9d4;
@@ -51,11 +58,9 @@ hr {
 .btn.error {
   background-color: #d3653a;
 }
-.hide {
-  display: none;
-}
 input[type="text"] {
   width: 100%;
+  padding: 2px 5px;
   border-radius: 0;
   box-shadow: inset;
   text-align: left;
@@ -64,10 +69,16 @@ input[type="text"] {
   border: none;
   border-bottom: 1px solid #f8e408;
   background-color: transparent;
-  color: #EEE;
+  color: #eee;
 }
 input[type="text"]:focus {
   border-bottom-color: #acd848;
+}
+.row {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center;
 }
 .row > .item {
   padding-left: 5px;
@@ -79,147 +90,130 @@ input[type="text"]:focus {
 .row > .item:last-child {
   padding-right: 0;
 }
-.item {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-.row {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-}
-.row .item {
-  -webkit-flex: 0 1 auto;
+.row > .item {
   flex: 0 1 auto;
+  -webkit-flex: 0 1 auto;
 }
-.row .space {
-  -webkit-flex: 1 0 auto;
+.row > .space {
   flex: 1 0 auto;
+  -webkit-flex: 1 0 auto;
 }
-.row .item-start {
+.row > .item-start {
   -webkit-align-self: flex-start;
   align-self: flex-start;
 }
-.row .item-center {
+.row > .item-center {
   -webkit-align-self: flex-center;
   align-self: flex-center;
 }
-.row .item-end {
+.row > .item-end {
   -webkit-align-self: flex-end;
   align-self: flex-end;
 }
-.row .item-stretch {
+.row > .item-stretch {
   -webkit-align-self: stretch;
   align-self: stretch;
 }
 .flow {
   display: block;
 }
-.flow .item {
-  float: left;
-}
 .flow:after {
   clear: both;
   content: "";
   display: block;
 }
+.flow > .item {
+  float: left;
+}
 .alone:not(:last-child) {
   margin-bottom: 15px;
 }
-.clear {
-  clear: both;
-}
+/* header */
 header {
   padding: 5px 10px;
 }
 header .title {
   width: 80%;
 }
-header .title h3 {
+header .title > .h3 {
   margin: 5px 0;
 }
 header .operate {
   float: right;
 }
-header .operate .sync-all .btn {
-  border-color: #c5f18d;
-}
-header .operate .sync-all .btn:hover,
-header .operate .sync-all .btn.active {
-  background-color: #c5f18d;
-}
-.overview .info .sitename {
-  font-weight: 700;
-}
-.overview .info .method {
-  color: #AAA;
-}
-.overview .operate .access .btn {
+header .operate > .sync-all > .btn {
   border-color: #acd848;
 }
-.overview .operate .access .btn:hover,
-.overview .operate .access .btn.active {
+header .operate > .sync-all > .btn:hover,
+header .operate > .sync-all > .btn.active {
   background-color: #acd848;
 }
-.overview .operate .edit .btn {
+/* navigator */
+.nav > .nav-container {
+  padding: 8px;
+}
+.nav > .nav-container .link-brick {
+  border: 1px #eee solid;
+  padding: 3px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+.nav > .nav-container .link-brick > a.link {
+  color: #AAA;
+  text-decoration: none;
+}
+.nav > .nav-container .link-brick > a.link:visited,
+.nav > .nav-container .link-brick > a.link:target,
+.nav > .nav-container .link-brick > a.link:hover,
+.nav > .nav-container .link-brick > a.link.active {
+  color: #AAA;
+}
+.nav > .nav-container .link-brick > .remove {
+  cursor: pointer;
+}
+.nav > .nav-container .link-brick > .remove:hover {
+  color: #d3653a;
+}
+.nav > .nav-container .link-brick.removed {
+  background-color: #777;
+}
+/* info list */
+.line-container {
+  padding: 5px 10px;
+}
+.overview .operate > .access > .btn {
+  border-color: #acd848;
+}
+.overview .operate > .access > .btn:hover,
+.overview .operate > .access > .btn.active {
+  background-color: #acd848;
+}
+.overview .operate > .edit > .btn {
   border-color: #f8e408;
 }
-.overview .operate .edit .btn:hover,
-.overview .operate .edit .btn.active {
+.overview .operate > .edit > .btn:hover,
+.overview .operate > .edit > .btn.active {
   background-color: #f8e408;
 }
-.overview .operate .enable .btn:not(.disabled) {
+.overview .operate > .enable > .btn:not(.disabled) {
   border-color: #c6ffb7;
+}
+.overview .operate > .enable > .btn:not(.disabled):hover,
+.overview .operate > .enable > .btn:not(.disabled).active {
   background-color: #c6ffb7;
 }
-.overview .operate .enable .btn:not(.disabled):hover,
-.overview .operate .enable .btn:not(.disabled).active {
+.overview .operate > .enable > .btn.disabled {
+  border-color: #d3aa33;
+}
+.overview .operate > .enable > .btn.disabled:hover,
+.overview .operate > .enable > .btn.disabled.active {
   background-color: rgba(0, 0, 0, 0);
 }
-.overview .operate .enable .btn.disabled {
-  border-color: #d3653a;
-  background-color: #d3653a;
-}
-.overview .operate .enable .btn.disabled:hover {
-  background-color: rgba(0, 0, 0, 0);
-}
-.details .paths .path .title {
+.details .paths > .path > .title {
   width: 100px;
   max-width: 100px;
 }
 .details .privates .private {
   width: 50%;
-}
-.nav .nav-container {
-  padding: 8px;
-}
-.nav .nav-container .link-brick {
-  border: 1px #AAA solid;
-  padding: 2px;
-  margin: 2px;
-}
-.nav .nav-container .link-brick a.link {
-  color: #EEE;
-  text-decoration: none;
-}
-.nav .nav-container .link-brick a.link:visited,
-.nav .nav-container .link-brick a.link:hover,
-.nav .nav-container .link-brick a.link:active {
-  color: #EEE;
-}
-.nav .nav-container .link-brick a.link:hover {
-  text-decoration: underline;
-}
-.nav .nav-container .link-brick .remove {
-  cursor: pointer;
-}
-.nav .nav-container .link-brick .remove:hover {
-  color: #d3653a;
-}
-.nav .nav-container .link-brick.removed {
-  background-color: #AAA;
-}
-.line-container {
-  padding: 5px 10px;
+  padding: 0 5px;
 }
