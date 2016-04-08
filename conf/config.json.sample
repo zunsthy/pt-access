@@ -70,38 +70,24 @@
 			"id": 29826
 		}
 	},
-	"HDArea": {
+	"GGn": {
 		"enable": false,
 		"method": "password",
 		"info": {
 			"protocol": "http:",
-			"host": "www.hdarea.co",
+			"host": "iptorrents.me",
 			"port": "80"
 		},
 		"paths": {
 			"blank": "/login.php",
-			"login": "/takelogin.php",
+			"login": "/login.php",
 			"index": "/index.php"
 		},
 		"legacy": {
 			"username": "<username>",
-			"password": "<password>"
-		}
-	},
-	"HDhome": {
-		"enable": false,
-		"method": "passkey",
-		"info": {
-			"protocol": "https:",
-			"host": "hdhome.org",
-			"port": "443"
-		},
-		"paths": {
-			"download": "/download.php"
-		},
-		"download": {
-			"passkey": "<passkey>",
-			"id": 3392
+			"password": "<password>",
+			"keeplogged": "1",
+			"login": "Login"
 		}
 	},
 	"U2": {
@@ -191,6 +177,24 @@
 			"id": 1234
 		}
 	},
+	"HDArea": {
+		"enable": false,
+		"method": "password",
+		"info": {
+			"protocol": "http:",
+			"host": "www.hdarea.co",
+			"port": "80"
+		},
+		"paths": {
+			"blank": "/login.php",
+			"login": "/takelogin.php",
+			"index": "/index.php"
+		},
+		"legacy": {
+			"username": "<username>",
+			"password": "<password>"
+		}
+	},
 	"WHUPT": {
 		"enable": false,
 		"method": "passkey",
@@ -207,24 +211,20 @@
 			"id": 4
 		}
 	},
-	"GGn": {
+	"HDhome": {
 		"enable": false,
-		"method": "password",
+		"method": "passkey",
 		"info": {
-			"protocol": "http:",
-			"host": "iptorrents.me",
-			"port": "80"
+			"protocol": "https:",
+			"host": "hdhome.org",
+			"port": "443"
 		},
 		"paths": {
-			"blank": "/login.php",
-			"login": "/login.php",
-			"index": "/index.php"
+			"download": "/download.php"
 		},
-		"legacy": {
-			"username": "<username>",
-			"password": "<password>",
-			"keeplogged": "1",
-			"login": "Login"
+		"download": {
+			"passkey": "<passkey>",
+			"id": 3392
 		}
 	},
 	"IPT": {

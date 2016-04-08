@@ -1,26 +1,29 @@
 {
-  "name": "pt-login",
+  "name": "pt-access",
   "version": "0.0.2",
   "author": "zunsthy",
   "license": "MIT",
-  "description": "PT-login is a tool to access multiple PT(private tracker) sites and store login info without opening those sites.",
+  "description": "PT-access is a tool to access multiple PT(private tracker) sites and store login info without opening those sites.",
   "private": true,
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "open": "^0.0.5",
     "gulp": "^3.9.1",
-    "gulp-less": "^3.0.5"
+    "gulp-less": "^3.0.5",
+    "open": "^0.0.5"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zunsthy/pt-login.git"
+    "url": "git+https://github.com/zunsthy/pt-access.git"
   },
   "bugs": {
-    "url": "https://github.com/zunsthy/pt-login/issues"
+    "url": "https://github.com/zunsthy/pt-access/issues"
   },
-  "homepage": "https://github.com/zunsthy/pt-login#readme",
-  "keywords": ["pt", "login"]
+  "homepage": "https://github.com/zunsthy/pt-access#readme",
+  "keywords": [
+    "pt",
+    "access"
+  ]
 }
